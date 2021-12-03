@@ -1,6 +1,8 @@
 package ru.endroad.hakaton.mlcv.application
 
 import android.Manifest
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -8,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.view.PreviewView
+import androidx.core.widget.TextViewCompat
 import ru.endroad.hakaton.mlcv.R
 import ru.endroad.hakaton.mlcv.analyze.ComplexAnalyzer
 import ru.endroad.hakaton.mlcv.application.AlertLuminosityStatus.DARK
@@ -73,6 +76,21 @@ class SingleActivity : AppCompatActivity(R.layout.base_activity) {
 				CameraXFactory.createImageAnalyzer(cameraExecutor, analyzer)
 			)
 		}
+	}
+
+	private fun setPercentText(percent: Int) {
+		label.text = "Rice, $percent %"
+
+		when (percent) {
+			in 90..100 -> label.setStartDrawable(R.drawable.ic_alert, Color.parseColor("#00000000"))
+			in 50..90  -> label.setStartDrawable(R.drawable.ic_alert, Color.parseColor("#E1BA02"))
+			in 0..50   -> label.setStartDrawable(R.drawable.ic_alert, Color.parseColor("#E10202"))
+		}
+	}
+
+	private fun TextView.setStartDrawable(resId: Int?, tintColor: Int? = null) {
+		label.setCompoundDrawablesWithIntrinsicBounds(resId ?: 0, 0, 0, 0)
+		TextViewCompat.setCompoundDrawableTintList(this, tintColor?.let(ColorStateList::valueOf))
 	}
 
 	private fun setupAlertView(status: AlertLuminosityStatus) {

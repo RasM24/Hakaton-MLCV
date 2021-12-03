@@ -16,4 +16,7 @@ dependencies {
 
 	implementation(MLKit.textRecognitionRemote)
 	implementation(MLKit.imageLabelingRemote)
+
+	implementation(Coroutine.core)
+	implementation(Coroutine.android)
 }
