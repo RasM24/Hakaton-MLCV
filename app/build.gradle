@@ -13,4 +13,6 @@ dependencies {
 	implementation(CameraX.camera2)
 	implementation(CameraX.lifecycle)
 	implementation(CameraX.view)
+
+	implementation(MLKit.textRecognition)
 }

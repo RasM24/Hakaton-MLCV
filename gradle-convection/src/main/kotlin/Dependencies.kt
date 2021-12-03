@@ -36,3 +36,8 @@ object CameraX {
 	const val lifecycle = "androidx.camera:camera-lifecycle:1.0.2"
 	const val view = "androidx.camera:camera-view:1.0.0-alpha31"
 }
+
+object MLKit {
+
+	const val textRecognition = "com.google.android.gms:play-services-mlkit-text-recognition:17.0.0"
+}

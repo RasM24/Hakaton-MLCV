@@ -31,7 +31,7 @@ class SingleActivity : AppCompatActivity(R.layout.base_activity) {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		when {
-			haveCameraPermission -> Unit
+			haveCameraPermission -> startCamera()
 			else                 -> requestPermissionLauncher.launch(Manifest.permission.CAMERA)
 		}
 	}

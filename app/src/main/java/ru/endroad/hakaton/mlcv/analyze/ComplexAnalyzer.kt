@@ -6,9 +6,11 @@ import androidx.camera.core.ImageProxy
 class ComplexAnalyzer(
 ) : ImageAnalysis.Analyzer {
 
-	override fun analyze(image: ImageProxy) {
-		val luma = LuminosityAnalyzer.analyze(image)
+	override fun analyze(imageProxy: ImageProxy) {
+		val luma = LuminosityAnalyzer.analyze(imageProxy)
+		TextAnalyzer.analyze(imageProxy)
 
-		image.close()
+
+		imageProxy.close()
 	}
 }
