@@ -4,17 +4,19 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.camera.core.ImageProxy
 import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.text.TextRecognition
-import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import com.google.mlkit.vision.label.ImageLabel
+import com.google.mlkit.vision.label.ImageLabeling
+import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
 
-object TextAnalyzer {
+object ImageLabelAnalyzer {
 
-	private val recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
+	val labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
 
 	@SuppressLint("UnsafeOptInUsageError")
 	fun analyze(imageProxy: ImageProxy) {
 		imageProxy.image
 			?.let { image -> InputImage.fromMediaImage(image, imageProxy.imageInfo.rotationDegrees) }
-			?.let { recognizer.process(it).addOnSuccessListener { result -> Log.d("analyzeText", result.text) } }
+			?.let { labeler.process(it).addOnSuccessListener { result -> Log.d("analyzeLabel", result[0].text) } }
 	}
+
 }

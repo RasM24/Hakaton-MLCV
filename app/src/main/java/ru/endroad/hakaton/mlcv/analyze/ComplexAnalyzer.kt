@@ -9,7 +9,7 @@ class ComplexAnalyzer(
 	override fun analyze(imageProxy: ImageProxy) {
 		val luma = LuminosityAnalyzer.analyze(imageProxy)
 		TextAnalyzer.analyze(imageProxy)
-
+		ImageLabelAnalyzer.analyze(imageProxy)
 
 		imageProxy.close()
 	}

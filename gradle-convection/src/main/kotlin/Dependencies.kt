@@ -39,5 +39,6 @@ object CameraX {
 
 object MLKit {
 
-	const val textRecognition = "com.google.android.gms:play-services-mlkit-text-recognition:17.0.0"
+	const val textRecognitionRemote = "com.google.android.gms:play-services-mlkit-text-recognition:17.0.0"
+	const val imageLabelingRemote = "com.google.android.gms:play-services-mlkit-image-labeling:16.0.5"
 }

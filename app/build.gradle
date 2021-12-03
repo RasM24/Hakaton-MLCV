@@ -14,5 +14,6 @@ dependencies {
 	implementation(CameraX.lifecycle)
 	implementation(CameraX.view)
 
-	implementation(MLKit.textRecognition)
+	implementation(MLKit.textRecognitionRemote)
+	implementation(MLKit.imageLabelingRemote)
 }
