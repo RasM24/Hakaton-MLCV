@@ -6,8 +6,8 @@ import androidx.camera.core.ImageProxy
 import com.google.mlkit.vision.common.InputImage
 
 class ComplexAnalyzer(
-	private val textListener: (String) -> Unit,
-	private val labelListener: (String) -> Unit,
+	private val textListener: (List<String>) -> Unit,
+	private val labelListener: (List<String>) -> Unit,
 	private val luminosityListener: (Double) -> Unit,
 ) : ImageAnalysis.Analyzer {
 
