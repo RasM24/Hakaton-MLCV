@@ -29,3 +29,10 @@ object GoogleServices {
 
 	const val maps = "com.google.android.gms:play-services-maps:17.0.1"
 }
+
+object CameraX {
+
+	const val camera2 = "androidx.camera:camera-camera2:1.0.2"
+	const val lifecycle = "androidx.camera:camera-lifecycle:1.0.2"
+	const val view = "androidx.camera:camera-view:1.0.0-alpha31"
+}

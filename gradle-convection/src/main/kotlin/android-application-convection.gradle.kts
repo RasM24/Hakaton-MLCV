@@ -3,14 +3,15 @@ import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
 plugins {
 	id("com.android.application")
 	kotlin("android")
+//	id("kotlin-android-extension")
 }
 
 configure<BaseAppModuleExtension> {
-	compileSdk = 30
+	compileSdk = 31
 
 	defaultConfig {
-		minSdk = 23
-		targetSdk = 30
+		minSdk = 24
+		targetSdk = 31
 		versionCode = 1
 		versionName = "1.0"
 
@@ -22,5 +23,10 @@ configure<BaseAppModuleExtension> {
 			isMinifyEnabled = false
 			proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
 		}
+	}
+
+	compileOptions {
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
 	}
 }

@@ -9,4 +9,8 @@ dependencies {
 
 	implementation(Koin.core)
 	implementation(Koin.android)
+
+	implementation(CameraX.camera2)
+	implementation(CameraX.lifecycle)
+	implementation(CameraX.view)
 }
