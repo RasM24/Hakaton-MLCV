@@ -2,6 +2,7 @@ package ru.endroad.hakaton.mlcv.application
 
 import android.Manifest
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -18,6 +19,12 @@ class SingleActivity : AppCompatActivity(R.layout.base_activity) {
 
 	private val viewFinder: PreviewView
 		get() = findViewById(R.id.viewFinder)
+
+	private val text: TextView
+		get() = findViewById(R.id.text)
+
+	private val label: TextView
+		get() = findViewById(R.id.label)
 
 	private val cameraExecutor: ExecutorService by lazy { Executors.newSingleThreadExecutor() }
 
@@ -38,13 +45,18 @@ class SingleActivity : AppCompatActivity(R.layout.base_activity) {
 
 	private fun startCamera() {
 		baseContext.cameraProvider { cameraProvider ->
+			val analyzer = ComplexAnalyzer(
+				textListener = text::setText,
+				labelListener = label::setText,
+			)
+
 			cameraProvider.unbindAll()
 
 			cameraProvider.bindToLifecycle(
 				this,
 				CameraSelector.DEFAULT_BACK_CAMERA,
 				CameraXFactory.createPreview(viewFinder),
-				CameraXFactory.createImageAnalyzer(cameraExecutor, ComplexAnalyzer())
+				CameraXFactory.createImageAnalyzer(cameraExecutor, analyzer)
 			)
 		}
 	}
